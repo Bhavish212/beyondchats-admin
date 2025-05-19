@@ -6,7 +6,7 @@ A modern and visually engaging admin dashboard for BeyondChats, built with **Rea
 
 ## 🌐 Live Deployment
 
-**Live Demo:** _[Add your live link here]_
+**Live Demo:** _[glittery-blancmange-17ed97.netlify.app]_
 
 ---
 
