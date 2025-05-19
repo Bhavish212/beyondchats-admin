@@ -61,18 +61,19 @@ const data = {
 
 const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       display: true,
       labels: {
-        color: "#64748b", // Tailwind gray-500
+        color: "#64748b",
       },
     },
   },
   scales: {
     x: {
       ticks: {
-        color: "#64748b", // Tailwind gray-500
+        color: "#64748b",
       },
     },
     y: {
@@ -86,27 +87,27 @@ const options = {
 const Dashboard = () => {
   return (
     <motion.div
-      className="p-6 max-w-6xl mx-auto bg-gradient-to-br from-sky-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 rounded-xl"
+      className="p-4 sm:p-6 max-w-6xl mx-auto bg-gradient-to-br from-sky-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 rounded-xl"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <h2 className="text-3xl font-bold mb-6 text-indigo-700 dark:text-white">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-indigo-700 dark:text-white text-center sm:text-left">
         Welcome Back, Admin!
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((stat, index) => (
           <motion.div
             key={index}
-            className={`rounded-xl p-5 shadow-md dark:shadow dark:bg-gray-800 transition hover:scale-[1.02] duration-200 ${stat.color}`}
+            className={`rounded-xl p-4 sm:p-5 shadow-md dark:shadow dark:bg-gray-800 transition hover:scale-[1.02] duration-200 ${stat.color}`}
             whileHover={{ y: -4 }}
           >
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm font-semibold">{stat.title}</div>
               {stat.icon}
             </div>
-            <div className="text-2xl font-bold">{stat.value}</div>
+            <div className="text-xl sm:text-2xl font-bold">{stat.value}</div>
             <div className="text-xs mt-1 text-gray-600 dark:text-gray-300">
               {stat.change} from last week
             </div>
@@ -115,15 +116,17 @@ const Dashboard = () => {
       </div>
 
       <motion.div
-        className="mt-10 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
+        className="mt-8 p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <h3 className="text-xl font-semibold text-indigo-700 dark:text-white mb-3">
+        <h3 className="text-lg sm:text-xl font-semibold text-indigo-700 dark:text-white mb-3">
           Weekly User Activity
         </h3>
-        <Line data={data} options={options} />
+        <div className="h-64 sm:h-80 w-full">
+          <Line data={data} options={options} />
+        </div>
       </motion.div>
     </motion.div>
   );
